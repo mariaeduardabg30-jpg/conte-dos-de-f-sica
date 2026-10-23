@@ -1,5 +1,5 @@
 /* Física Interativa - Service Worker */
-const CACHE_NAME = 'fisica-interativa-v1';
+const CACHE_NAME = 'fisica-interativa-v2';
 const ASSETS = [
   './',
   './index.html',
