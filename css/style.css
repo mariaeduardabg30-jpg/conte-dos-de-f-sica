@@ -117,6 +117,20 @@ body {
 .module-meta { font-size: 0.8rem; color: var(--accent); }
 .module-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 
+.search-input {
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  color: var(--text);
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  margin-bottom: 16px;
+  outline: none;
+}
+.search-input:focus { border-color: var(--accent); }
+.no-results { color: var(--muted); text-align: center; padding: 20px 0; }
+
 /* ---------- Botões ---------- */
 .btn {
   border: none;

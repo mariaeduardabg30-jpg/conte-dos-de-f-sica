@@ -7,11 +7,12 @@ const state = {
   index: 0,
   answers: [],
   result: null,
-  currentAnswer: null
+  currentAnswer: null,
+  searchTerm: ''
 };
 
 function $(id) {
-  return document.getElementById(id);
+  return document.querySelector(id);
 }
 
 function getModule(id) {
@@ -43,6 +44,14 @@ function moduleCardHtml(m) {
   `;
 }
 
+function getFilteredModules() {
+  const term = (state.searchTerm || '').trim().toLowerCase();
+  if (!term) return MODULES;
+  return MODULES.filter((m) =>
+    [m.id, m.title, m.description, m.icon].join(' ').toLowerCase().includes(term)
+  );
+}
+
 function renderHome() {
   const totalQuestions = MODULES.reduce((acc, m) => acc + m.questions.length, 0);
   $('#app').innerHTML = `
@@ -61,10 +70,25 @@ function renderHome() {
     </section>
 
     <h2 class="section-title">Escolha um módulo</h2>
+    <input class="search-input" type="text" id="search-input" placeholder="🔍 Buscar módulo..." />
     <div id="module-list" class="module-list"></div>
   `;
 
-  $('#module-list').innerHTML = MODULES.map(moduleCardHtml).join('');
+  const renderModuleList = () => {
+    const filtered = getFilteredModules();
+    $('#module-list').innerHTML = filtered.length
+      ? filtered.map(moduleCardHtml).join('')
+      : `<p class="no-results">Nenhum módulo encontrado para "${state.searchTerm}".</p>`;
+  };
+  renderModuleList();
+
+  const searchInput = $('#search-input');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      state.searchTerm = e.target.value;
+      renderModuleList();
+    });
+  }
 }
 
 function renderModule(moduleId) {
