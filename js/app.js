@@ -53,8 +53,16 @@ function getFilteredModules() {
 }
 
 function renderHome() {
+  function renderHome() {
   const totalQuestions = MODULES.reduce((acc, m) => acc + m.questions.length, 0);
-  $('#app').innerHTML = `
+  const app = document.getElementById('app');
+
+  if (!app) {
+    console.error('Elemento #app não encontrado.');
+    return;
+  }
+
+  app.innerHTML = `
     <header class="app-header">
       <div class="logo">Física<em>·</em>IA</div>
       <p class="tagline">Aprenda com conteúdo, fórmulas e quizzes</p>
