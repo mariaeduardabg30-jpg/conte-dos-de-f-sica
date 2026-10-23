@@ -28,6 +28,15 @@ body {
   min-height: 100vh;
 }
 
+/* ---------- Emblema ---------- */
+.emblema {
+  display: block;
+  width: 90px;
+  height: auto;
+  margin: 0;
+  margin-left: 16px;
+}
+
 /* Faixas decorativas superior e inferior */
 .strip {
   position: fixed;
