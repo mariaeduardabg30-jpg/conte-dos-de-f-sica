@@ -52,7 +52,7 @@ function getFilteredModules() {
   );
 }
 
-
+function renderHome() {
 function renderHome() {
   const totalQuestions = MODULES.reduce((acc, m) => acc + m.questions.length, 0);
   const app = document.getElementById('app');
@@ -99,7 +99,7 @@ function renderHome() {
     });
   }
 }
-
+}
 
 function renderModule(moduleId) {
   const m = getModule(moduleId);
