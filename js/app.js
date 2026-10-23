@@ -274,7 +274,7 @@ function handleQuizClick(e) {
     const action = actionBtn.dataset.action;
     const moduleId = actionBtn.dataset.moduleId;
     if (action === 'home') { state.screen = 'home'; render(); }
-    else if (action === 'module') { state.screen = 'module'; state.moduleId = moduleId; render(); }
+    else if (action === 'module' || action === 'study') { state.screen = 'module'; state.moduleId = moduleId; render(); }
     else if (action === 'quiz') startQuiz(moduleId);
   }
 }
