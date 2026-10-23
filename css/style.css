@@ -31,9 +31,8 @@ body {
 /* ---------- Emblema ---------- */
 .emblema {
   display: block;
-  width: 80px;
   width: 60px;
-  height: auto;
+  height: 60px;
   margin: 0;
   margin-left: 16px;
 }

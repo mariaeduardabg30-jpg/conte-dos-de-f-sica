@@ -1,4 +1,5 @@
 {
+  "id": "/",
   "name": "Física Interativa",
   "short_name": "Física",
   "description": "Plataforma PWA de Física com conteúdo, fórmulas e quizzes interativos.",
