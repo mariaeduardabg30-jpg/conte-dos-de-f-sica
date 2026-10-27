@@ -53,7 +53,6 @@ function getFilteredModules() {
 }
 
 function renderHome() {
-function renderHome() {
   const totalQuestions = MODULES.reduce((acc, m) => acc + m.questions.length, 0);
   const app = document.getElementById('app');
 
@@ -84,7 +83,9 @@ function renderHome() {
 
   const renderModuleList = () => {
     const filtered = getFilteredModules();
-    $('#module-list').innerHTML = filtered.length
+    const moduleListEl = $('#module-list');
+    if (!moduleListEl) return;
+    moduleListEl.innerHTML = filtered.length
       ? filtered.map(moduleCardHtml).join('')
       : `<p class="no-results">Nenhum módulo encontrado para "${state.searchTerm}".</p>`;
   };
@@ -98,7 +99,6 @@ function renderHome() {
       renderModuleList();
     });
   }
-}
 }
 
 function renderModule(moduleId) {
@@ -289,6 +289,9 @@ function handleQuizClick(e) {
   }
 }
 
-document.getElementById('app').addEventListener('click', handleQuizClick);
+const appRoot = document.getElementById('app');
+if (appRoot) {
+  appRoot.addEventListener('click', handleQuizClick);
+}
 
 render();
